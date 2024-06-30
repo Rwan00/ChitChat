@@ -1,13 +1,13 @@
-import 'package:chitchat/methods/methods.dart';
-import 'package:chitchat/screens/register_screen.dart';
-import 'package:chitchat/theme/fonts.dart';
-import 'package:chitchat/widgets/input_feild.dart';
+import 'package:chitchat/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../methods/methods.dart';
+import '../theme/fonts.dart';
 import '../widgets/app_btn.dart';
+import '../widgets/input_feild.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class RegisterScreen extends StatelessWidget {
+  const RegisterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -35,13 +35,17 @@ class LoginScreen extends StatelessWidget {
                 hint: "*****",
                 title: "Password",
               ),
+              const InputField(
+                hint: "*****",
+                title: "Confirm Password",
+              ),
               const SizedBox(
                 height: 15,
               ),
               SizedBox(
                 width: double.infinity,
                 child: AppBtn(
-                  label: "Login",
+                  label: "Register",
                   onPressed: () {},
                 ),
               ),
@@ -49,17 +53,17 @@ class LoginScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "Don't Have An Account?",
+                    "Already Have An Account?",
                     style: titleStyle,
                   ),
                   TextButton(
                       onPressed: () {
-                        navigateToAndDelete(context, const RegisterScreen());
+                        navigateToAndDelete(context, const LoginScreen());
                       },
                       child: Text(
-                        "Register",
+                        "Login",
                         style: appTitle,
-                      ))
+                      ),),
                 ],
               )
             ],

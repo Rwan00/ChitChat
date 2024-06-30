@@ -23,7 +23,7 @@ class AppBtn extends StatelessWidget {
           textStyle: WidgetStateProperty.all(GoogleFonts.raleway(fontSize: 16)),
           shape: WidgetStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16.0),
+              borderRadius: BorderRadius.circular(8.0),
             ),
           ),
           backgroundColor:

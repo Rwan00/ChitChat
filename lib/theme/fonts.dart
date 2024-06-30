@@ -1,3 +1,4 @@
+import 'package:chitchat/constants/consts.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -10,8 +11,10 @@ TextStyle get heading {
 
 TextStyle get appTitle {
   return GoogleFonts.actor(
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: FontWeight.w700,
+    color: brownColor,
+    decoration: TextDecoration.underline,
   );
 }
 
