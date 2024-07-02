@@ -27,7 +27,7 @@ class AppBtn extends StatelessWidget {
             ),
           ),
           backgroundColor:
-              WidgetStateProperty.all(clr ?? brownColor.withOpacity(0.6))),
+              WidgetStateProperty.all(clr ?? kBrownColor.withOpacity(0.6))),
       child: Text(
         label,
         style: style,

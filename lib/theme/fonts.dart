@@ -13,7 +13,7 @@ TextStyle get appTitle {
   return GoogleFonts.actor(
     fontSize: 20,
     fontWeight: FontWeight.w700,
-    color: brownColor,
+    color: kBrownColor,
     decoration: TextDecoration.underline,
   );
 }

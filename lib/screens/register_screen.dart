@@ -1,12 +1,11 @@
-import 'package:chitchat/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 
-import '../methods/methods.dart';
 import '../theme/fonts.dart';
 import '../widgets/app_btn.dart';
 import '../widgets/input_feild.dart';
 
 class RegisterScreen extends StatelessWidget {
+  static const String id = "RegisterScreen";
   const RegisterScreen({super.key});
 
   @override
@@ -57,15 +56,16 @@ class RegisterScreen extends StatelessWidget {
                     style: titleStyle,
                   ),
                   TextButton(
-                      onPressed: () {
-                        navigateToAndDelete(context, const LoginScreen());
-                      },
-                      child: Text(
-                        "Login",
-                        style: appTitle,
-                      ),),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text(
+                      "Login",
+                      style: appTitle,
+                    ),
+                  ),
                 ],
-              )
+              ),
             ],
           ),
         ),

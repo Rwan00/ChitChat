@@ -1,6 +1,8 @@
 import 'package:chitchat/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 
+import 'screens/register_screen.dart';
+
 void main() {
   runApp(const ChitChat());
 }
@@ -11,11 +13,15 @@ class ChitChat extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      routes: {
+        LoginScreen.id:(context)=>const LoginScreen(),
+        RegisterScreen.id:(context)=>const RegisterScreen(),
+      },
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const LoginScreen(),
+      initialRoute: "LoginScreen",
     );
   }
 }
