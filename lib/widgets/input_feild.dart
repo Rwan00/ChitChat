@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../theme/fonts.dart';
 
-class InputField extends StatelessWidget {
+class InputField extends StatefulWidget {
   final String? title;
   final String hint;
   final TextEditingController? controller;
@@ -21,58 +21,96 @@ class InputField extends StatelessWidget {
       super.key});
 
   @override
+  State<InputField> createState() => _InputFieldState();
+}
+
+class _InputFieldState extends State<InputField> {
+  @override
   Widget build(BuildContext context) {
     bool showPwd = false;
+     Widget icon = const Icon(Icons.remove_red_eye_outlined);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (title != null)
+        if (widget.title != null)
           Text(
-            title!,
+            widget.title!,
             style: titleStyle,
           ),
         const SizedBox(
           height: 4,
         ),
         Container(
-          height: 50,
-          margin: const EdgeInsets.only(bottom: 8),
+          //height: 80,
+          //margin: const EdgeInsets.only(bottom: 18),
           decoration: BoxDecoration(
             color: Colors.grey.withOpacity(0.2),
-            borderRadius: BorderRadius.circular(12),
+            //borderRadius: BorderRadius.circular(12),
           ),
           child: TextFormField(
-            obscureText: isPassword && !showPwd,
-            controller: controller,
-            keyboardType: textType,
+            validator: (data) {
+              if (data!.isEmpty) {
+                return "**Field Is Required!";
+              }
+              return null;
+            },
+            obscureText: widget.isPassword && !showPwd,
+            controller: widget.controller,
+            keyboardType: widget.textType,
             autofocus: false,
             style: titleStyle,
             cursorColor: kPrimaryColor,
+            
             decoration: InputDecoration(
-              /* suffixIcon: isPassword
+              suffixIcon: widget.isPassword
                         ? IconButton(
                             onPressed: () {
-                              //cubit.changePasswordVisibility();
+                              setState(() {
+                                showPwd = !showPwd;
+    icon = showPwd
+        ? const Icon(Icons.visibility_off_outlined)
+        : const Icon(Icons.visibility_outlined);
+                              });
                             },
-                            icon: cubit.icon,
+                            icon: icon,
                           )
-                        : widget, */
-              hintText: hint,
+                        : null,
+              focusedErrorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+                borderSide: BorderSide(
+                  color: kErrorColor,
+                  style: BorderStyle.solid,
+                  width: 2,
+                ),
+              ),
+              errorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+                borderSide: BorderSide(
+                  color: kErrorColor,
+                  style: BorderStyle.solid,
+                  width: 2,
+                ),
+              ),
+              hintText: widget.hint,
               hintStyle: subTitle,
               enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                  borderSide: const BorderSide(
-                    color: Colors.grey,
-                    style: BorderStyle.solid,
-                    width: 1,
-                  )),
+                borderRadius: BorderRadius.circular(12),
+                borderSide: const BorderSide(
+                  color: Colors.grey,
+                  style: BorderStyle.solid,
+                  width: 1,
+                ),
+              ),
               focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                  
-                  borderSide: BorderSide(
-                    color: kBrownColor,
-                    width: 2,
-                  )),
+                borderRadius: BorderRadius.circular(12),
+                borderSide: BorderSide(
+                  color: kBrownColor,
+                  width: 2,
+                ),
+              ),
+              errorStyle: titleStyle.copyWith(
+                color: kErrorColor,
+              ),
             ),
           ),
         ),
