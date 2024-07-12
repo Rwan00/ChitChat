@@ -64,9 +64,17 @@ class LoginScreen extends StatelessWidget {
                         const SizedBox(
                           height: 150,
                         ),
-                        Image.asset(
-                          kLogo,
-                          height: 200,
+                        Row(
+                          children: [
+                            Image.asset(
+                              kLogo,
+                              height: 200,
+                            ),
+                            Text(
+                              "ChitChat",
+                              style: heading,
+                            ),
+                          ],
                         ),
                         InputField(
                           hint: "example@gmail.com",

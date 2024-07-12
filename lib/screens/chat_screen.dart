@@ -1,6 +1,8 @@
 import 'package:chitchat/constants/consts.dart';
 import 'package:chitchat/theme/fonts.dart';
-import 'package:chitchat/widgets/chat_bubble.dart';
+import 'package:chitchat/widgets/chat_messages.dart';
+import 'package:chitchat/widgets/input_feild.dart';
+
 import 'package:flutter/material.dart';
 
 class ChatScreen extends StatelessWidget {
@@ -15,39 +17,36 @@ class ChatScreen extends StatelessWidget {
             children: [
               Image.asset(
                 kLogo,
-                height: 50,
-                width: 50,
+                height: 40,
+                width: 40,
+              ),
+              const SizedBox(
+                width: 18,
               ),
               Text(
                 "Group Chat",
-                style: titleStyle,
+                style: titleStyle.copyWith(fontSize: 22),
               ),
             ],
           ),
         ),
         body: Column(
           children: [
-            MessageBubble.first(
-              username: "Rowan",
-              message: "Hello There",
-              isMe: true,
-              time: "",
+            const Expanded(
+              child: ChatMessages(),
             ),
-            MessageBubble.next(
-              message: "Hello There",
-              isMe: true,
-              time: "",
-            ),
-            MessageBubble.first(
-              username: "Mira123654788855455",
-              message: "Hello There",
-              isMe: false,
-              time: "",
-            ),
-            MessageBubble.next(
-              message: "Hello There",
-              isMe: false,
-              time: "",
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: InputField(
+                hint: "Send Message",
+                widget: IconButton(
+                  icon: Icon(
+                    Icons.send,
+                    color: kBrownColor,
+                  ),
+                  onPressed: () {},
+                ),
+              ),
             ),
           ],
         ));

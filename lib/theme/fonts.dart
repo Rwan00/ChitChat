@@ -6,6 +6,7 @@ TextStyle get heading {
   return GoogleFonts.actor(
     fontSize: 32,
     fontWeight: FontWeight.w700,
+    color: kBrownColor,
   );
 }
 

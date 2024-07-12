@@ -59,7 +59,7 @@ class InputField extends StatelessWidget {
                   keyboardType: textType,
                   autofocus: false,
                   style: titleStyle,
-                  cursorColor: kPrimaryColor,
+                  cursorColor: kBrownColor,
                   decoration: InputDecoration(
                     suffixIcon: isPassword
                         ? IconButton(

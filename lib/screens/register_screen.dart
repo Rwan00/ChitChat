@@ -66,9 +66,17 @@ class RegisterScreen extends StatelessWidget {
                         const SizedBox(
                           height: 150,
                         ),
-                        Image.asset(
-                          kLogo,
-                          height: 200,
+                        Row(
+                          children: [
+                            Image.asset(
+                              kLogo,
+                              height: 200,
+                            ),
+                            Text(
+                              "ChitChat",
+                              style: heading,
+                            ),
+                          ],
                         ),
                         InputField(
                           hint: "example@gmail.com",
@@ -102,8 +110,7 @@ class RegisterScreen extends StatelessWidget {
                                   text: "Password Doesn't Match",
                                   error: true,
                                 );
-                              }
-                             else if (formKey.currentState!.validate()) {
+                              } else if (formKey.currentState!.validate()) {
                                 cubit.userRegister(
                                   email: email.text,
                                   password: password.text,
