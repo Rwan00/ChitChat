@@ -19,6 +19,7 @@ class RegisterCubit extends Cubit<RegisterState> {
         email: email,
         password: password,
       );
+      emit(RegisterSuccessState());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         emit(

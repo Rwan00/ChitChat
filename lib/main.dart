@@ -22,7 +22,7 @@ class ChitChat extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        LoginScreen.id: (context) => const LoginScreen(),
+        LoginScreen.id: (context) =>  LoginScreen(),
         RegisterScreen.id: (context) =>  RegisterScreen(),
       },
       theme: ThemeData(

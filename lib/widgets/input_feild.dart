@@ -1,6 +1,6 @@
 import 'package:chitchat/constants/consts.dart';
-import 'package:chitchat/cubits/register_cubit.dart';
-import 'package:chitchat/cubits/register_state.dart';
+import 'package:chitchat/cubits/register_cubits/register_cubit.dart';
+import 'package:chitchat/cubits/register_cubits/register_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -45,6 +45,7 @@ class InputField extends StatelessWidget {
               Container(
                 decoration: BoxDecoration(
                   color: Colors.grey.withOpacity(0.2),
+                  borderRadius: BorderRadius.circular(12),
                 ),
                 child: TextFormField(
                   validator: (data) {
