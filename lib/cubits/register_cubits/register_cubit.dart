@@ -21,13 +21,16 @@ class RegisterCubit extends Cubit<RegisterState> {
       );
       emit(RegisterSuccessState());
     } on FirebaseAuthException catch (e) {
+      print(e.code);
       if (e.code == 'weak-password') {
         emit(
-          RegisterErrorState(error: "'The password provided is too weak.'"),
+          RegisterErrorState(error: "The password provided is too weak."),
         );
       } else if (e.code == 'email-already-in-use') {
         emit(RegisterErrorState(
-            error: "'The account already exists for that email.'"));
+            error: "The account already exists for that email."));
+      }else if (e.code == 'invalid-email') {
+        emit(RegisterErrorState(error: 'You had Entered An Invalid Email.'));
       }
     } catch (e) {
       print(e);

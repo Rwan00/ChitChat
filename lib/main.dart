@@ -1,4 +1,5 @@
 import 'package:chitchat/firebase_options.dart';
+import 'package:chitchat/screens/chat_screen.dart';
 import 'package:chitchat/screens/login_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -24,6 +25,7 @@ class ChitChat extends StatelessWidget {
       routes: {
         LoginScreen.id: (context) =>  LoginScreen(),
         RegisterScreen.id: (context) =>  RegisterScreen(),
+        ChatScreen.id:(context)=>const ChatScreen(),
       },
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple,),

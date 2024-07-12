@@ -1,3 +1,4 @@
+import 'package:chitchat/constants/consts.dart';
 import 'package:chitchat/cubits/register_cubits/register_state.dart';
 import 'package:chitchat/screens/login_screen.dart';
 
@@ -39,7 +40,7 @@ class RegisterScreen extends StatelessWidget {
               text: "Your Register Done Successfully",
               error: false,
             );
-            Navigator.pushNamed(context, LoginScreen.id);
+            Navigator.pushReplacementNamed(context, LoginScreen.id);
           }
         },
         builder: (context, state) {
@@ -51,7 +52,7 @@ class RegisterScreen extends StatelessWidget {
               child: ModalProgressHUD(
                 inAsyncCall: state is RegisterLoadingState,
                 progressIndicator: Image.asset(
-                  "assets/loading.gif",
+                  kLoading,
                   width: 90,
                   height: 90,
                 ),
@@ -66,7 +67,7 @@ class RegisterScreen extends StatelessWidget {
                           height: 150,
                         ),
                         Image.asset(
-                          "assets/ChitChat.png",
+                          kLogo,
                           height: 200,
                         ),
                         InputField(
@@ -95,7 +96,14 @@ class RegisterScreen extends StatelessWidget {
                           child: AppBtn(
                             label: "Register",
                             onPressed: () {
-                              if (formKey.currentState!.validate()) {
+                              if (password.text != confirmPassword.text) {
+                                buildSnackBar(
+                                  context: context,
+                                  text: "Password Doesn't Match",
+                                  error: true,
+                                );
+                              }
+                             else if (formKey.currentState!.validate()) {
                                 cubit.userRegister(
                                   email: email.text,
                                   password: password.text,

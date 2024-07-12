@@ -1,4 +1,3 @@
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -7,7 +6,7 @@ import 'login_state.dart';
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit() : super(LoginInitialState());
 
-  static LoginCubit get(context) =>  BlocProvider.of(context);
+  static LoginCubit get(context) => BlocProvider.of(context);
 
   void userLogin({
     required String email,
@@ -21,10 +20,12 @@ class LoginCubit extends Cubit<LoginState> {
       );
       emit(LoginSuccessState());
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        emit(LoginErrorState(error: "No user found for that email."));
-      } else if (e.code == 'wrong-password') {
-        emit(LoginErrorState(error: 'Wrong password provided for that user.'));
+      print(e.code);
+      if (e.code == 'invalid-credential') {
+        emit(LoginErrorState(
+            error: 'Wrong password Or Email provided for that user.'));
+      } else if (e.code == 'invalid-email') {
+        emit(LoginErrorState(error: 'You had Entered An Invalid Email.'));
       }
     } catch (e) {
       print(e);

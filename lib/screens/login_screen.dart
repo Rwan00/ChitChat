@@ -1,5 +1,7 @@
+import 'package:chitchat/constants/consts.dart';
 import 'package:chitchat/cubits/login_cubit/login_cubit.dart';
 import 'package:chitchat/cubits/login_cubit/login_state.dart';
+import 'package:chitchat/screens/chat_screen.dart';
 import 'package:chitchat/theme/fonts.dart';
 import 'package:chitchat/widgets/input_feild.dart';
 import 'package:flutter/material.dart';
@@ -36,6 +38,7 @@ class LoginScreen extends StatelessWidget {
               text: "Welcome To ChitChat",
               error: false,
             );
+            Navigator.pushReplacementNamed(context, ChatScreen.id);
           }
         },
         builder: (context, state) {
@@ -47,7 +50,7 @@ class LoginScreen extends StatelessWidget {
               child: ModalProgressHUD(
                 inAsyncCall: state is LoginLoadingState,
                 progressIndicator: Image.asset(
-                  "assets/loading.gif",
+                  kLoading,
                   width: 90,
                   height: 90,
                 ),
@@ -62,7 +65,7 @@ class LoginScreen extends StatelessWidget {
                           height: 150,
                         ),
                         Image.asset(
-                          "assets/ChitChat.png",
+                          kLogo,
                           height: 200,
                         ),
                         InputField(
