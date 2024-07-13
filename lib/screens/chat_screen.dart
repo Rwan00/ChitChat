@@ -2,6 +2,7 @@ import 'package:chitchat/constants/consts.dart';
 import 'package:chitchat/theme/fonts.dart';
 import 'package:chitchat/widgets/chat_messages.dart';
 import 'package:chitchat/widgets/input_feild.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:flutter/material.dart';
 
@@ -10,6 +11,9 @@ class ChatScreen extends StatelessWidget {
   static String id = "Chat Screen";
   @override
   Widget build(BuildContext context) {
+    TextEditingController messages = TextEditingController();
+    CollectionReference messagesCollection =
+        FirebaseFirestore.instance.collection(kMessagesCollection);
     return Scaffold(
         appBar: AppBar(
           backgroundColor: kPrimaryColor,
@@ -39,12 +43,18 @@ class ChatScreen extends StatelessWidget {
               padding: const EdgeInsets.all(12.0),
               child: InputField(
                 hint: "Send Message",
+                controller: messages,
                 widget: IconButton(
                   icon: Icon(
                     Icons.send,
                     color: kBrownColor,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    messagesCollection.add({
+                      "message": messages.text,
+                    });
+                    messages.clear();
+                  },
                 ),
               ),
             ),

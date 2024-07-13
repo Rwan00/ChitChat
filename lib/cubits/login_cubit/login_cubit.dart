@@ -29,7 +29,7 @@ class LoginCubit extends Cubit<LoginState> {
       }
     } catch (e) {
       print(e);
-      emit(LoginErrorState(error: "'There Was An Error!!'"));
+      emit(LoginErrorState(error: "There Was An Error!!"));
     }
   }
 }
