@@ -52,6 +52,7 @@ class ChatScreen extends StatelessWidget {
                   onPressed: () {
                     messagesCollection.add({
                       "message": messages.text,
+                      "SendAt" : DateTime.now(),
                     });
                     messages.clear();
                   },

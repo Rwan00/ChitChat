@@ -14,7 +14,7 @@ class ChatMessages extends StatelessWidget {
     CollectionReference messagesCollection =
         FirebaseFirestore.instance.collection(kMessagesCollection);
     return StreamBuilder(
-      stream: messagesCollection.snapshots(),
+      stream: messagesCollection.orderBy("SendAt").snapshots(),
       builder: (context, snapshot) {
          if (snapshot.hasError) {
           return Center(child: Text('Something went wrong',style: titleStyle,),);
