@@ -14,6 +14,7 @@ class ChatScreen extends StatelessWidget {
     TextEditingController messages = TextEditingController();
     CollectionReference messagesCollection =
         FirebaseFirestore.instance.collection(kMessagesCollection);
+    ScrollController scrollController = ScrollController();
     return Scaffold(
         appBar: AppBar(
           backgroundColor: kPrimaryColor,
@@ -36,8 +37,10 @@ class ChatScreen extends StatelessWidget {
         ),
         body: Column(
           children: [
-            const Expanded(
-              child: ChatMessages(),
+            Expanded(
+              child: ChatMessages(
+                scrollController: scrollController,
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(12.0),
@@ -52,9 +55,14 @@ class ChatScreen extends StatelessWidget {
                   onPressed: () {
                     messagesCollection.add({
                       "message": messages.text,
-                      "SendAt" : DateTime.now(),
+                      "SendAt": DateTime.now(),
                     });
                     messages.clear();
+                    scrollController.animateTo(
+                      scrollController.position.maxScrollExtent,
+                      duration: const Duration(seconds: 1),
+                      curve: Curves.easeIn,
+                    );
                   },
                 ),
               ),
