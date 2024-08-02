@@ -15,6 +15,7 @@ class ChatScreen extends StatelessWidget {
     CollectionReference messagesCollection =
         FirebaseFirestore.instance.collection(kMessagesCollection);
     ScrollController scrollController = ScrollController();
+    String email = ModalRoute.of(context)!.settings.arguments as String;
     return Scaffold(
         appBar: AppBar(
           backgroundColor: kPrimaryColor,
@@ -56,10 +57,11 @@ class ChatScreen extends StatelessWidget {
                     messagesCollection.add({
                       "message": messages.text,
                       "SendAt": DateTime.now(),
+                      "id" : email,
                     });
                     messages.clear();
                     scrollController.animateTo(
-                      scrollController.position.maxScrollExtent,
+                      0,
                       duration: const Duration(seconds: 1),
                       curve: Curves.easeIn,
                     );

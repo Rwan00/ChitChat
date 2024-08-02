@@ -38,7 +38,7 @@ class LoginScreen extends StatelessWidget {
               text: "Welcome To ChitChat",
               error: false,
             );
-            Navigator.pushReplacementNamed(context, ChatScreen.id);
+            Navigator.pushReplacementNamed(context, ChatScreen.id,arguments: email.text,);
           }
         },
         builder: (context, state) {

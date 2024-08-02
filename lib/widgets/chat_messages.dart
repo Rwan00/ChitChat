@@ -16,7 +16,7 @@ class ChatMessages extends StatelessWidget {
         FirebaseFirestore.instance.collection(kMessagesCollection);
 
     return StreamBuilder(
-      stream: messagesCollection.orderBy("SendAt").snapshots(),
+      stream: messagesCollection.orderBy("SendAt",descending: true,).snapshots(),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
           return Center(
@@ -39,6 +39,7 @@ class ChatMessages extends StatelessWidget {
             messagesList.add(MessagesModel.fromJson(snapshot.data!.docs[i]));
           }
           return ListView.builder(
+            reverse: true,
             controller: scrollController,
             itemCount: messagesList.length,
             itemBuilder: (context, index) {
