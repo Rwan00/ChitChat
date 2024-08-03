@@ -1,12 +1,13 @@
 import 'package:chitchat/constants/consts.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../theme/fonts.dart';
 
 class MessageBubble extends StatelessWidget {
   const MessageBubble.first({
     super.key,
-    required this.username,
+   
     required this.message,
     required this.isMe,
     required this.time,
@@ -19,12 +20,12 @@ class MessageBubble extends StatelessWidget {
     required this.isMe,
     required this.time,
     this.file,
-  })  : isFirstInSequence = false,
-        username = null;
+  })  : isFirstInSequence = false
+       ;
 
   final bool isFirstInSequence;
 
-  final String? username;
+  
   final String? message;
 
   final bool isMe;
@@ -34,10 +35,10 @@ class MessageBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //DateTime apiDateTime = DateTime.parse(time);
+    DateTime apiDateTime = DateTime.parse(time);
 
-    /* String formattedDateTime =
-        DateFormat.MMMMEEEEd().addPattern("'at' HH:mm").format(apiDateTime); */
+     String formattedDateTime =
+        DateFormat.MMMMEEEEd().addPattern("'at' HH:mm").format(apiDateTime); 
     return Stack(
       children: [
         Row(
@@ -49,24 +50,7 @@ class MessageBubble extends StatelessWidget {
                   isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
               children: [
                 if (isFirstInSequence) const SizedBox(height: 18),
-                if (isFirstInSequence)
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      padding: const EdgeInsets.all(6.0),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(
-                            8,
-                          ),
-                          border: Border.all(color: Colors.grey)),
-                      child: Text(
-                        username!,
-                        style: titleStyle.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
+                
                 Container(
                   decoration: BoxDecoration(
                     color: isMe ? kBrownColor : kPrimaryColor,
@@ -121,7 +105,7 @@ class MessageBubble extends StatelessWidget {
                           softWrap: true,
                         ),
                 ),
-                /* Padding(
+                Padding(
                   padding: const EdgeInsets.only(
                     left: 13,
                     right: 13,
@@ -130,7 +114,7 @@ class MessageBubble extends StatelessWidget {
                     formattedDateTime,
                     style: subTitle,
                   ),
-                ), */
+                ),
               ],
             ),
           ],

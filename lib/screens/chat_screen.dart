@@ -41,6 +41,7 @@ class ChatScreen extends StatelessWidget {
             Expanded(
               child: ChatMessages(
                 scrollController: scrollController,
+                id: email,
               ),
             ),
             Padding(
@@ -56,7 +57,7 @@ class ChatScreen extends StatelessWidget {
                   onPressed: () {
                     messagesCollection.add({
                       "message": messages.text,
-                      "SendAt": DateTime.now(),
+                      "sendAt": DateTime.now().toString(),
                       "id" : email,
                     });
                     messages.clear();
