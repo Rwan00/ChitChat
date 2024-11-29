@@ -1,5 +1,5 @@
 import 'package:chitchat/constants/consts.dart';
-import 'package:chitchat/cubits/auth_cubit/auth_state.dart';
+import 'package:chitchat/features/cubits/auth_cubit/auth_state.dart';
 
 import 'package:chitchat/screens/login_screen.dart';
 
@@ -8,7 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 
-import '../cubits/auth_cubit/auth_cubit.dart';
+import '../features/cubits/auth_cubit/auth_cubit.dart';
 import '../methods/methods.dart';
 import '../theme/fonts.dart';
 import '../widgets/app_btn.dart';

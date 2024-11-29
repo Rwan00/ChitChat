@@ -1,5 +1,5 @@
-import 'package:chitchat/blocs/auth_bloc/auth_bloc.dart';
-import 'package:chitchat/blocs/auth_bloc/auth_event.dart';
+import 'package:chitchat/features/auth_bloc/auth_bloc.dart';
+import 'package:chitchat/features/auth_bloc/auth_event.dart';
 import 'package:chitchat/constants/consts.dart';
 
 import 'package:chitchat/screens/chat_screen.dart';
@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
-import '../blocs/auth_bloc/auth_state.dart';
+import '../features/auth_bloc/auth_state.dart';
 import '../methods/methods.dart';
 import '../widgets/app_btn.dart';
 import 'register_screen.dart';

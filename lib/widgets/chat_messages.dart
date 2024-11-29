@@ -1,7 +1,7 @@
 import 'dart:developer';
 
-import 'package:chitchat/cubits/chat_cubit/chat_cubit.dart';
-import 'package:chitchat/cubits/chat_cubit/chat_state.dart';
+import 'package:chitchat/features/cubits/chat_cubit/chat_cubit.dart';
+import 'package:chitchat/features/cubits/chat_cubit/chat_state.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

@@ -1,6 +1,6 @@
 import 'package:chitchat/constants/consts.dart';
-import 'package:chitchat/cubits/chat_cubit/chat_cubit.dart';
-import 'package:chitchat/cubits/chat_cubit/chat_state.dart';
+import 'package:chitchat/features/cubits/chat_cubit/chat_cubit.dart';
+import 'package:chitchat/features/cubits/chat_cubit/chat_state.dart';
 import 'package:chitchat/theme/fonts.dart';
 import 'package:chitchat/widgets/chat_messages.dart';
 import 'package:chitchat/widgets/input_feild.dart';

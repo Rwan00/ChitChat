@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../constants/consts.dart';
-import '../../models/messages_model.dart';
+import '../../../constants/consts.dart';
+import '../../../models/messages_model.dart';
 import 'chat_state.dart';
 
 class ChatCubit extends Cubit<ChatState> {
