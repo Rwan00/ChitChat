@@ -1,6 +1,6 @@
+import 'package:chitchat/blocs/auth_bloc/auth_bloc.dart';
+import 'package:chitchat/blocs/auth_bloc/auth_event.dart';
 import 'package:chitchat/constants/consts.dart';
-import 'package:chitchat/cubits/auth_cubit/auth_cubit.dart';
-import 'package:chitchat/cubits/auth_cubit/auth_state.dart';
 
 import 'package:chitchat/screens/chat_screen.dart';
 import 'package:chitchat/theme/fonts.dart';
@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
+import '../blocs/auth_bloc/auth_state.dart';
 import '../methods/methods.dart';
 import '../widgets/app_btn.dart';
 import 'register_screen.dart';
@@ -24,8 +25,8 @@ class LoginScreen extends StatelessWidget {
     TextEditingController email = TextEditingController();
     TextEditingController password = TextEditingController();
     return BlocProvider(
-      create: (context) => AuthCubit(),
-      child: BlocConsumer<AuthCubit, AuthState>(
+      create: (context) => AuthBloc(),
+      child: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state is LoginErrorState) {
             buildSnackBar(
@@ -39,11 +40,15 @@ class LoginScreen extends StatelessWidget {
               text: "Welcome To ChitChat",
               error: false,
             );
-            Navigator.pushReplacementNamed(context, ChatScreen.id,arguments: email.text,);
+            Navigator.pushReplacementNamed(
+              context,
+              ChatScreen.id,
+              arguments: email.text,
+            );
           }
         },
         builder: (context, state) {
-          var cubit = AuthCubit.get(context);
+          var cubit = BlocProvider.of<AuthBloc>(context);
           return Scaffold(
             backgroundColor: const Color.fromRGBO(241, 229, 209, 1),
             body: Form(
@@ -98,9 +103,11 @@ class LoginScreen extends StatelessWidget {
                             label: "Login",
                             onPressed: () {
                               if (formKey.currentState!.validate()) {
-                                cubit.userLogin(
-                                  email: email.text,
-                                  password: password.text,
+                                cubit.add(
+                                  LoginEvent(
+                                    email: email.text,
+                                    password: password.text,
+                                  ),
                                 );
                               }
                             },

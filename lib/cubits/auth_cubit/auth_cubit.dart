@@ -13,30 +13,30 @@ class AuthCubit extends Cubit<AuthState> {
 
   static AuthCubit get(context) => BlocProvider.of(context);
 
-  void userLogin({
-    required String email,
-    required String password,
-  }) async {
-    emit(LoginLoadingState());
-    try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-      emit(LoginSuccessState());
-    } on FirebaseAuthException catch (e) {
-      print(e.code);
-      if (e.code == 'invalid-credential') {
-        emit(LoginErrorState(
-            error: 'Wrong password Or Email provided for that user.'));
-      } else if (e.code == 'invalid-email') {
-        emit(LoginErrorState(error: 'You had Entered An Invalid Email.'));
-      }
-    } catch (e) {
-      print(e);
-      emit(LoginErrorState(error: "There Was An Error!!"));
-    }
-  }
+  // void userLogin({
+  //   required String email,
+  //   required String password,
+  // }) async {
+  //   emit(LoginLoadingState());
+  //   try {
+  //     await FirebaseAuth.instance.signInWithEmailAndPassword(
+  //       email: email,
+  //       password: password,
+  //     );
+  //     emit(LoginSuccessState());
+  //   } on FirebaseAuthException catch (e) {
+  //     print(e.code);
+  //     if (e.code == 'invalid-credential') {
+  //       emit(LoginErrorState(
+  //           error: 'Wrong password Or Email provided for that user.'));
+  //     } else if (e.code == 'invalid-email') {
+  //       emit(LoginErrorState(error: 'You had Entered An Invalid Email.'));
+  //     }
+  //   } catch (e) {
+  //     print(e);
+  //     emit(LoginErrorState(error: "There Was An Error!!"));
+  //   }
+  // }
 
   void userRegister({
     required String email,
