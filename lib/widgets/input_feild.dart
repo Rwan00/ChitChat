@@ -1,9 +1,10 @@
 import 'package:chitchat/constants/consts.dart';
-import 'package:chitchat/cubits/register_cubits/register_cubit.dart';
-import 'package:chitchat/cubits/register_cubits/register_state.dart';
+import 'package:chitchat/cubits/auth_cubit/auth_state.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../cubits/auth_cubit/auth_cubit.dart';
 import '../theme/fonts.dart';
 
 class InputField extends StatelessWidget {
@@ -26,11 +27,11 @@ class InputField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => RegisterCubit(),
-      child: BlocConsumer<RegisterCubit, RegisterState>(
+      create: (context) => AuthCubit(),
+      child: BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) {},
         builder: (context, state) {
-          var cubit = RegisterCubit.get(context);
+          var cubit = AuthCubit.get(context);
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

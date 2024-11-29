@@ -1,12 +1,14 @@
 import 'package:chitchat/constants/consts.dart';
-import 'package:chitchat/cubits/register_cubits/register_state.dart';
+import 'package:chitchat/cubits/auth_cubit/auth_state.dart';
+
 import 'package:chitchat/screens/login_screen.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
-import '../cubits/register_cubits/register_cubit.dart';
+
+import '../cubits/auth_cubit/auth_cubit.dart';
 import '../methods/methods.dart';
 import '../theme/fonts.dart';
 import '../widgets/app_btn.dart';
@@ -25,8 +27,8 @@ class RegisterScreen extends StatelessWidget {
     TextEditingController confirmPassword = TextEditingController();
 
     return BlocProvider(
-      create: (context) => RegisterCubit(),
-      child: BlocConsumer<RegisterCubit, RegisterState>(
+      create: (context) => AuthCubit(),
+      child: BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) {
           if (state is RegisterErrorState) {
             buildSnackBar(
@@ -44,7 +46,7 @@ class RegisterScreen extends StatelessWidget {
           }
         },
         builder: (context, state) {
-          var cubit = RegisterCubit.get(context);
+          var cubit = AuthCubit.get(context);
           return Scaffold(
             backgroundColor: const Color.fromRGBO(241, 229, 209, 1),
             body: Form(

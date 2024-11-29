@@ -1,6 +1,7 @@
 import 'package:chitchat/constants/consts.dart';
-import 'package:chitchat/cubits/login_cubit/login_cubit.dart';
-import 'package:chitchat/cubits/login_cubit/login_state.dart';
+import 'package:chitchat/cubits/auth_cubit/auth_cubit.dart';
+import 'package:chitchat/cubits/auth_cubit/auth_state.dart';
+
 import 'package:chitchat/screens/chat_screen.dart';
 import 'package:chitchat/theme/fonts.dart';
 import 'package:chitchat/widgets/input_feild.dart';
@@ -23,8 +24,8 @@ class LoginScreen extends StatelessWidget {
     TextEditingController email = TextEditingController();
     TextEditingController password = TextEditingController();
     return BlocProvider(
-      create: (context) => LoginCubit(),
-      child: BlocConsumer<LoginCubit, LoginState>(
+      create: (context) => AuthCubit(),
+      child: BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) {
           if (state is LoginErrorState) {
             buildSnackBar(
@@ -42,7 +43,7 @@ class LoginScreen extends StatelessWidget {
           }
         },
         builder: (context, state) {
-          var cubit = LoginCubit.get(context);
+          var cubit = AuthCubit.get(context);
           return Scaffold(
             backgroundColor: const Color.fromRGBO(241, 229, 209, 1),
             body: Form(
